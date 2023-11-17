@@ -46,14 +46,15 @@ const login = async (req, res) => {
         const userQuery = 'SELECT * FROM users WHERE email = ? LIMIT 1';
         const [user] = await db.query(userQuery, [email]);
 
+        // If user with email does not exist
         if (user.length === 0) {
-            return res.status(401).json({ message: 'Invalid credentials' });
+            return res.status(401).json({ message: 'Email does not exist' });
         }
 
         // Compare password
         const isMatch = await bcrypt.compare(password, user[0].password_hash);
         if (!isMatch) {
-            return res.status(401).json({ message: 'Invalid credentials' });
+            return res.status(401).json({ message: 'Incorrect password' });
         }
 
         // Create and assign a token
