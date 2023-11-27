@@ -28,7 +28,7 @@ CREATE TABLE orders (
   payment_status ENUM('pending', 'paid', 'failed', 'refunded')
 );
 
--- Creating the products table
+-- Creating the products table with the 'Featured' column
 CREATE TABLE products (
   id INT AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(100) NOT NULL,
@@ -37,7 +37,8 @@ CREATE TABLE products (
   price DECIMAL(10, 2) NOT NULL,
   image VARCHAR(255),
   type ENUM('cloud', 'hard_drive'),
-  quantity_in_stock INT
+  quantity_in_stock INT,
+  featured TINYINT(1) DEFAULT 0
 );
 
 -- Creating the subscriptions table without FK constraints
