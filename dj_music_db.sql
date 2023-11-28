@@ -56,7 +56,8 @@ CREATE TABLE tracks (
   name VARCHAR(100) NOT NULL,
   category VARCHAR(50),
   duration TIME NOT NULL,
-  s3_url VARCHAR(255) NOT NULL
+  s3_url VARCHAR(255) NOT NULL,
+  preview TINYINT(1) DEFAULT 0
 );
 
 -- Creating the Downloads table without FK constraints
